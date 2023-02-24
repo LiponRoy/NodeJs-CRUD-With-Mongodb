@@ -1,9 +1,9 @@
-const express = require('express');
-const { addData, getAll } = require('../controller/instructorController');
+import express from 'express';
+import { addData, getAll } from '../controller/instructorController.js';
 
 const instructorRouter = express.Router();
 //CREATE A PRODUCT
-router.post('/add', addData);
-router.get('/all', getAll);
+instructorRouter.post('/add', addData);
+instructorRouter.get('/all', getAll);
 
-module.exports = instructorRouter;
+export default instructorRouter;

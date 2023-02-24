@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import instructorModel from '../model/instructorModel';
+import instructorModel from '../model/instructorModel.js';
 
 //Create new data
 export const addData = async (req, res, next) => {
@@ -17,7 +17,7 @@ export const addData = async (req, res, next) => {
 // getting all of data
 export const getAll = async (req, res, next) => {
 	try {
-		const All = instructorModel.find();
+		const All = await instructorModel.find();
 		res.status(200).send(All);
 	} catch (error) {
 		console.log(error);

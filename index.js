@@ -2,7 +2,7 @@ import express from 'express';
 import dotEnv from 'dotenv';
 import mongoose from 'mongoose';
 import cors from 'cors';
-import instructorRouter from './router/instructorRoute';
+import instructorRouter from './router/instructorRoute.js';
 const app = express();
 dotEnv.config();
 
