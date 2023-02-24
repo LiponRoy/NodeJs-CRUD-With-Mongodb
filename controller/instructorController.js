@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 import instructorModel from '../model/instructorModel';
 
 //Create new data
-const addData = async (req, res, next) => {
+export const addData = async (req, res, next) => {
 	const { name, email, phone, address, status } = req.body;
 	try {
 		const instructorData = new instructorModel({ name, email, phone, address, status });
@@ -25,4 +25,4 @@ export const getAll = async (req, res, next) => {
 	}
 };
 
-module.exports = { addData, getAll };
+// module.exports = { addData, getAll };
