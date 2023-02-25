@@ -18,13 +18,29 @@ export const addData = async (req, res, next) => {
 export const getAll = async (req, res, next) => {
 	try {
 		const All = await instructorModel.find();
+		if (!All) {
+			res.status(400).json({ message: 'data not found' });
+		}
 		res.status(200).send(All);
 	} catch (error) {
 		console.log(error);
 		res.status(500).send(error);
 	}
 };
-
+// getting single data
+export const getOneData = async (req, res, next) => {
+	try {
+		const oneData = await instructorModel.findById(req.params.id);
+		if (!oneData) {
+			res.status(400).json({ message: 'data not found' });
+		}
+		res.status(200).send(oneData);
+	} catch (error) {
+		console.log(error);
+		res.status(500).send(error);
+	}
+};
+// Update data
 export const updateData = async (req, res) => {
 	const data = await instructorModel.findById(req.params.id);
 	if (!data) {
