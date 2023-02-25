@@ -25,4 +25,31 @@ export const getAll = async (req, res, next) => {
 	}
 };
 
+export const updateData = async (req, res) => {
+	const data = await instructorModel.findById(req.params.id);
+	if (!data) {
+		res.status(400).json({ message: 'data not found' });
+	}
+	const updateData = await instructorModel.findByIdAndUpdate(req.params.id, req.body, { new: true });
+	if (!updateData) {
+		res.status(400).json({ message: 'do not updated' });
+	}
+	if (updateData) {
+		res.status(201).json({ message: 'data updated' });
+	}
+};
+
+export const deleteData = async (req, res) => {
+	try {
+		const deleteData = await instructorModel.findByIdAndDelete(req.params.id);
+		res.json({
+			message: 'deleted successful .',
+			deleteData,
+		});
+	} catch (error) {
+		console.log(error);
+		res.status(500).send(error);
+	}
+};
+
 // module.exports = { addData, getAll };
